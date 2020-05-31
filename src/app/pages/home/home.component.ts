@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {RssService} from '../../services/rss.service';
+import {map, reduce, take, tap} from 'rxjs/operators';
+import {RssModel} from '../../interfaces/rss-model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  rssFeed: RssModel[];
 
-  ngOnInit(): void {
+  constructor(
+    private rssService: RssService,
+  ) {
   }
 
+  ngOnInit(): void {
+    this.getJsonFromService();
+  }
+
+  getJsonFromService() {
+    return this.rssService.getJsonFromDatabase$()
+      .pipe(
+        take(1),
+        map(value => Object.values(value)
+          .reduce((acc, value) => {
+            return [...Object.values(value)];
+          }, [])
+        ),
+        tap(rss => this.rssFeed = rss),
+      )
+      .subscribe();
+  }
 }
