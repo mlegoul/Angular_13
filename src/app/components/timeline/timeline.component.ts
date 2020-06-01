@@ -10,7 +10,7 @@ import {RssModel} from '../../interfaces/rss-model';
 })
 export class TimelineComponent implements OnInit {
 
-  rssFeed: RssModel;
+  rssFeed: RssModel[];
 
   constructor(
     private rssService: RssService,
