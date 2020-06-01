@@ -1,12 +1,4 @@
 <main>
   <h1>Hello,</h1>
-
-  <section>
-    <article *ngFor="let data of rssFeed">
-      <h2>{{ data.title }}</h2>
-      <p>{{ data.description }}</p>
-      <p><strong>{{ data.created_at }}</strong></p>
-      <img src="{{ data.imgUrl }}" alt="image descriton de l'article">
-    </article>
-  </section>
+  <app-timeline></app-timeline>
 </main>
