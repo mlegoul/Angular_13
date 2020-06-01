@@ -4,10 +4,11 @@ import {TimelineComponent} from './timeline.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {FrenchDatePipe} from '../../pipes/french-date.pipe';
 
 
 @NgModule({
-  declarations: [TimelineComponent],
+  declarations: [TimelineComponent, FrenchDatePipe],
   exports: [
     TimelineComponent
   ],
