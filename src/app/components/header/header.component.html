@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    Sidenav content
+    Sidenav content
+    Sidenav content
+    Sidenav content
+    Sidenav content
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button (click)="sidenav.toggle()">CLICK</button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
