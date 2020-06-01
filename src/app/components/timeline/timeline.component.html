@@ -1,13 +1,18 @@
 <section>
   <article *ngFor="let data of rssFeed" class="article">
-    <a href="{{ data.link}}" target="_blank">
-      <mat-card>
-        <h2>{{ data.title }}</h2>
-        <img src="{{ data.imgUrl }}" alt="image descriton de l'article">
-        <p><strong>{{ data.created_at }}</strong></p>
-        <p>{{ data.description }}</p>
+    <a href="{{ data.link }}" target="_blank" class="link">
+      <mat-card class="card">
+        <mat-card-title>
+          <h2>{{ data.title }}</h2>
+        </mat-card-title>
+        <img mat-card-image src="{{ data.imgUrl }}" alt="image description de l'article">
+        <mat-card-content>
+          <p><strong>{{ data.description }}</strong></p>
+        </mat-card-content>
+        <mat-card-footer>
+          <p>{{ data.created_at }}</p>
+        </mat-card-footer>
       </mat-card>
     </a>
   </article>
 </section>
-
