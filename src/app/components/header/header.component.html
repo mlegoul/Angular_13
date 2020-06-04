@@ -1,15 +1,29 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side">
-    Sidenav content
-    Sidenav content
-    Sidenav content
-    Sidenav content
-    Sidenav content
+  <mat-sidenav #sidenav mode="over">
+    <nav>
+      <ul>
+        <li *ngFor="let data of listInputsForMenu">
+          <button mat-button color="primary" routerLink="{{checkList.get(data).router}}" (click)="sidenav.close()">
+            <mat-icon aria-hidden="false">{{checkList.get(data).display}}</mat-icon>
+            <h3>{{checkList.get(data).title}}</h3>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button (click)="sidenav.toggle()">CLICK</button>
+    <header>
+      <mat-grid-list cols="3" rowHeight="15:1">
+        <mat-toolbar color="primary">
+          <mat-grid-tile rowspan="1">
+            <button mat-icon-button (click)="sidenav.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </mat-grid-tile>
+        </mat-toolbar>
+      </mat-grid-list>
+    </header>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

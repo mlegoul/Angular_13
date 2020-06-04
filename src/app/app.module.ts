@@ -9,6 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HeaderModule} from './components/header/header.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -22,6 +23,7 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
