@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SideNavModel} from '../../models/sideNav-model';
+import {SideNavModel} from '../../interfaces/sideNav-model';
 
 @Component({
   selector: 'app-header',

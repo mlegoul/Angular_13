@@ -1,6 +1,5 @@
 .article {
   display: flex;
-  margin: 1em;
   justify-content: center;
 }
 
@@ -9,8 +8,8 @@
 }
 
 .card {
+  margin: 1em;
   height: auto;
-  width: 25vw;
 }
 
 span {
