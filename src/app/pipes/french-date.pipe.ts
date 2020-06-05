@@ -7,7 +7,7 @@ import {formatDate} from '@angular/common';
 export class FrenchDatePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
-    return formatDate(value, 'EEEE d MMMM yyyy, à HH:mm', 'fr-FR');
+    return formatDate(value, 'EEEE d MMMM yyyy, HH:mm', 'fr-FR').toUpperCase();
   }
 
 }

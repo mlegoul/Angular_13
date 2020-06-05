@@ -1,4 +1,11 @@
-<main>
-  <h1>Hello,</h1>
-  <app-timeline></app-timeline>
-</main>
+<section>
+  <mat-grid-list cols="6">
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+    <mat-grid-tile rowspan="1" colspan="2">
+        <article class="timeline">
+          <app-timeline></app-timeline>
+        </article>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+  </mat-grid-list>
+</section>
