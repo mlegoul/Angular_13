@@ -1,5 +1,10 @@
+<article *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</article>
+
+
 <article *ngFor="let data of rssFeed">
-  <a href="{{ data.link }}" target="_blank" class="link">
+  <a href="{{ data.link }}" target="_blank" class="link" rel="noopener noreferrer">
     <mat-card class="card">
       <mat-card-title>
         <h2>{{ data.title }}</h2>

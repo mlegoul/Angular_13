@@ -8,12 +8,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [HomeComponent],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        TimelineModule,
-        MatGridListModule,
-    ]
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    TimelineModule,
+    MatGridListModule,
+  ]
 })
 export class HomeModule {
 }

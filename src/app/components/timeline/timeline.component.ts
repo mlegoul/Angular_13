@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {map, take, tap} from 'rxjs/operators';
+import {catchError, map, take, tap} from 'rxjs/operators';
 import {RssService} from '../../services/rss.service';
 import {RssModel} from '../../interfaces/rss-model';
 
@@ -11,6 +11,7 @@ import {RssModel} from '../../interfaces/rss-model';
 export class TimelineComponent implements OnInit {
 
   rssFeed: RssModel[];
+  isLoading: boolean = true;
 
   constructor(
     private rssService: RssService,
@@ -31,6 +32,7 @@ export class TimelineComponent implements OnInit {
           }, [])
         ),
         tap(rss => this.rssFeed = rss),
+        tap(() => this.isLoading = false),
       )
       .subscribe();
   }
