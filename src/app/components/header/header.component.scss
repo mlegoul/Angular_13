@@ -1,9 +1,10 @@
 mat-sidenav-content {
-  height: 100vh;
+  height: 100%;
 }
 
 mat-toolbar {
   margin: 0;
+  height: 8vh;
 }
 
 ul {
@@ -14,12 +15,11 @@ ul {
   width: 100%;
 }
 
-mat-grid-list {
-  margin: 0;
-  padding: 0;
-}
-
 mat-sidenav {
   width: 20em;
 }
 
+mat-grid-list {
+  margin: 0;
+  padding: 0 !important;
+}
