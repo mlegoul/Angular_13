@@ -1,23 +1,26 @@
+<article *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</article>
+
+
 <article *ngFor="let data of rssFeed">
-  <a href="{{ data.link }}" target="_blank" class="link">
-    <mat-card class="card">
-      <mat-card-title>
-        <h2>{{ data.title }}</h2>
-      </mat-card-title>
-      <img mat-card-image src="{{ data.imgUrl }}" alt="image description de l'article">
-      <mat-card-content>
-        <p><strong>{{ data.description }}</strong></p>
-      </mat-card-content>
-      <mat-card-footer>
-        <mat-grid-list cols="6" rowHeight="3:1">
-          <p>
-            <mat-grid-tile colspan="3">
-              <mat-icon aria-hidden="false" aria-label="Example time icon">query_builder</mat-icon>
-              <span>{{ data.created_at | frenchDate }}</span>
-            </mat-grid-tile>
-          </p>
-        </mat-grid-list>
-      </mat-card-footer>
-    </mat-card>
-  </a>
+  <mat-card class="card" (click)="eventLinkArticle(data.link)">
+    <mat-card-title>
+      <h2>{{ data.title }}</h2>
+    </mat-card-title>
+    <img mat-card-image src="{{ data.imgUrl }}" alt="image description de l'article">
+    <mat-card-content>
+      <p><strong>{{ data.description }}</strong></p>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-grid-list cols="6" rowHeight="3:1">
+        <p>
+          <mat-grid-tile colspan="3">
+            <mat-icon aria-hidden="false" aria-label="Example time icon">query_builder</mat-icon>
+            <span>{{ data.created_at | frenchDate }}</span>
+          </mat-grid-tile>
+        </p>
+      </mat-grid-list>
+    </mat-card-footer>
+  </mat-card>
 </article>

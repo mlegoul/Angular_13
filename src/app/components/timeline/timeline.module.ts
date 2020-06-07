@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {FrenchDatePipe} from '../../pipes/french-date.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {FrenchDatePipe} from '../../pipes/french-date.pipe';
     CommonModule,
     MatCardModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class TimelineModule {
