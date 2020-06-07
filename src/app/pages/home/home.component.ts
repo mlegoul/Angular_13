@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {TimelineComponent} from '../../components/timeline/timeline.component';
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -7,20 +8,28 @@ import {TimelineComponent} from '../../components/timeline/timeline.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
   @ViewChild(TimelineComponent) component: TimelineComponent;
   linkFromTimeline: string;
 
-  constructor() {
+  url: SafeResourceUrl;
+
+  constructor(
+    private sanitizer: DomSanitizer,
+  ) {
   }
 
   ngOnInit(): void {
-
   }
+
 
   getDataFromTimeline(data: string) {
     this.linkFromTimeline = data;
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(data);
+
   }
+
 
 }
