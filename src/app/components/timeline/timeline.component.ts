@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {catchError, map, take, tap} from 'rxjs/operators';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {map, take, tap} from 'rxjs/operators';
 import {RssService} from '../../services/rss.service';
 import {RssModel} from '../../interfaces/rss-model';
+
 
 @Component({
   selector: 'app-timeline',
@@ -10,8 +11,11 @@ import {RssModel} from '../../interfaces/rss-model';
 })
 export class TimelineComponent implements OnInit {
 
+  @Output() linkByOutput = new EventEmitter();
+
   rssFeed: RssModel[];
   isLoading: boolean = true;
+
 
   constructor(
     private rssService: RssService,
@@ -21,6 +25,12 @@ export class TimelineComponent implements OnInit {
   ngOnInit(): void {
     this.getJsonFromService();
   }
+
+  eventLinkArticle(url) {
+    console.log('from timeline ----> ', url);
+    return this.linkByOutput.emit(url);
+  }
+
 
   getJsonFromService() {
     return this.rssService.getJsonFromDatabase$()

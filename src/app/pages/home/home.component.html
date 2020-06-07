@@ -3,9 +3,12 @@
     <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
     <mat-grid-tile rowspan="1" colspan="2">
       <article class="timeline">
-        <app-timeline></app-timeline>
+        <app-timeline (linkByOutput)="getDataFromTimeline($event)"></app-timeline>
       </article>
     </mat-grid-tile>
-    <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+    <mat-grid-tile rowspan="1" colspan="3">
+      <span>{{ linkFromTimeline }}</span>
+      <p></p>
+    </mat-grid-tile>
   </mat-grid-list>
 </section>

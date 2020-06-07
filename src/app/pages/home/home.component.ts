@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {TimelineComponent} from '../../components/timeline/timeline.component';
+
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild(TimelineComponent) comp: TimelineComponent;
+  linkFromTimeline: string;
+
   constructor() {
   }
 
   ngOnInit(): void {
+
+  }
+
+  getDataFromTimeline(data: string) {
+    this.linkFromTimeline = data;
   }
 
 }

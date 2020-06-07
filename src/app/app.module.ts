@@ -26,6 +26,7 @@ registerLocaleData(localeFr, 'fr');
     HeaderModule,
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

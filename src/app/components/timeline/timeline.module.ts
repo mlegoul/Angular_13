@@ -13,13 +13,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   exports: [
     TimelineComponent
   ],
-    imports: [
-        CommonModule,
-        MatCardModule,
-        MatIconModule,
-        MatGridListModule,
-        MatProgressSpinnerModule
-    ]
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
+  ]
 })
 export class TimelineModule {
 }
