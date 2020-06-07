@@ -9,7 +9,7 @@ import {TimelineComponent} from '../../components/timeline/timeline.component';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild(TimelineComponent) comp: TimelineComponent;
+  @ViewChild(TimelineComponent) component: TimelineComponent;
   linkFromTimeline: string;
 
   constructor() {

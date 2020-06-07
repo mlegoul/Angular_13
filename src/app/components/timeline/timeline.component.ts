@@ -12,22 +12,21 @@ import {RssModel} from '../../interfaces/rss-model';
 export class TimelineComponent implements OnInit {
 
   @Output() linkByOutput = new EventEmitter();
-
   rssFeed: RssModel[];
   isLoading: boolean = true;
-
 
   constructor(
     private rssService: RssService,
   ) {
   }
 
+
   ngOnInit(): void {
     this.getJsonFromService();
   }
 
-  eventLinkArticle(url) {
-    console.log('from timeline ----> ', url);
+
+  eventLinkArticle(url): void {
     return this.linkByOutput.emit(url);
   }
 
