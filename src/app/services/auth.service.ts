@@ -22,15 +22,16 @@ export class AuthService {
       .pipe(
         tap((token) => {
           this.isConnected = true;
-          this.isLogged();
-          return localStorage.setItem('myToken', Object.values(token).map(value => value)[1]);
+          return this.setSession(token);
         }),
       )
   }
 
+  setSession(authResult) {
+    return localStorage.setItem('id_token', JSON.stringify(Object.values(authResult)[1]));
+  }
 
-  isLogged(): boolean {
-    console.log('isConnected =', this.isConnected);
+  isLogged() {
     return this.isConnected;
   }
 

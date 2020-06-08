@@ -20,15 +20,16 @@ export class LoginGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let result = this.authService.isLogged();
+    let result: boolean = this.authService.isLogged();
 
     if (!result) {
-      this.router.navigate(['/login']);
+      console.log('No valid token -->', result);
+      this.router.navigate(['/login']).then();
       return false;
     } else {
-      this.router.navigate(['/']);
+      console.log('Token valid -->', result);
+      this.router.navigate(['/']).then();
       return true;
     }
-
   }
 }
