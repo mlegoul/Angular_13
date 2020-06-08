@@ -1,26 +1,53 @@
 <section>
-  <mat-grid-list cols="1" rowHeight="fit">
-    <mat-grid-tile rowspan="1" colspan="1">
-      <mat-card>
+  <mat-card>
+
+    <mat-grid-list cols="1" rowHeight="fit" class="header">
+      <mat-grid-tile colspan="1" rowspan="1">
         <mat-card-title>
-          <h1>LOGIN :</h1>
+          <h1>Se connecter</h1>
         </mat-card-title>
+      </mat-grid-tile>
+    </mat-grid-list>
 
-        <mat-card-content>
-          <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <label>
-                <input matInput>
-              </label>
-            </mat-form-field>
-          </form>
-        </mat-card-content>
 
-        <mat-card-footer>
-          <p>sdfsd4441221</p>
-        </mat-card-footer>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+    <mat-grid-list cols="1" rowHeight="fit" class="content">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card-title>
+          <mat-form-field appearance="outline">
+            <mat-label>EMAIL</mat-label>
+            <label>
+              <input matInput placeholder="exemple@gmail.fr">
+            </label>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </mat-card-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="1" rowHeight="fit" class="content">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card-title>
+          <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+    <mat-grid-list cols="1" rowHeight="fit" class="footer">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card-title>
+          <button mat-flat-button color="primary">Envoyer</button>
+        </mat-card-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+  </mat-card>
 </section>
