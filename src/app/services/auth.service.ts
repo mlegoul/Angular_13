@@ -20,9 +20,10 @@ export class AuthService {
   loginFromService$(login: string, password: string): Observable<Object> {
     return this.http.post('http://localhost:3000/api/auth/login', {login, password})
       .pipe(
-        tap(() => {
+        tap((token) => {
           this.isConnected = true;
-          return this.isLogged();
+          this.isLogged();
+          return localStorage.setItem('myToken', Object.values(token).map(value => value)[1]);
         }),
       )
   }
