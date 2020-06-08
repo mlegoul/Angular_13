@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {take, tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
   ) {
   }
 
@@ -22,9 +27,19 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      email: ['' || null, [Validators.required, Validators.email]],
-      password: ['' || null, [Validators.required]],
+      email: ['test@gmail.com' || null, [Validators.required, Validators.email]],
+      password: ['toto' || null, [Validators.required]],
     });
+  }
+
+  sendLoginForm() {
+    const values = this.loginForm.value;
+    return this.authService.loginFromService$(values.email, values.password)
+      .pipe(
+        take(1),
+        tap(x => console.log(x)),
+      )
+      .subscribe();
   }
 
 }
