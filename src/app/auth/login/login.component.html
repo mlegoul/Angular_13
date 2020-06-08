@@ -14,7 +14,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card-title>
           <mat-form-field appearance="outline">
-            <mat-label>EMAIL</mat-label>
+            <mat-label>Email</mat-label>
             <label>
               <input matInput placeholder="exemple@gmail.fr">
             </label>
@@ -40,11 +40,17 @@
     </mat-grid-list>
 
 
-    <mat-grid-list cols="1" rowHeight="fit" class="footer">
+    <mat-grid-list cols="3" rowHeight="fit" class="footer">
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card-title>
           <button mat-flat-button color="primary">Envoyer</button>
         </mat-card-title>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="1">
+        <button mat-flat-button routerLink="/sign-up">Nouveau compte</button>
       </mat-grid-tile>
     </mat-grid-list>
 
