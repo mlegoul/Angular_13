@@ -10,7 +10,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderModule} from './components/header/header.module';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import {SignUpComponent} from './auth/sign-up/sign-up.component';
 
 registerLocaleData(localeFr, 'fr');
 

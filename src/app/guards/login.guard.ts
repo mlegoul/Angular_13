@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
-import {Observable,} from 'rxjs';
+import {CanActivate, Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 
 
@@ -17,19 +16,16 @@ export class LoginGuard implements CanActivate {
   ) {
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let result: boolean = this.authService.isLogged();
+  canActivate(): boolean {
 
-    if (!result) {
-      console.log('No valid token -->', result);
-      this.router.navigate(['/login']).then();
-      return false;
-    } else {
-      console.log('Token valid -->', result);
-      this.router.navigate(['/']).then();
+    if (this.authService.isLogged()) {
+      console.log('TRUE');
+      this.router.navigate(['/']);
       return true;
+    } else {
+      console.log('FALSE');
+      this.router.navigate(['/login']);
+      return false;
     }
   }
 }
