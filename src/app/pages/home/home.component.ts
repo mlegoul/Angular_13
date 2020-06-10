@@ -1,6 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {TimelineComponent} from '../../components/timeline/timeline.component';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -11,13 +9,10 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 export class HomeComponent implements OnInit {
 
-  @ViewChild(TimelineComponent) component: TimelineComponent;
-  linkFromTimeline: string;
 
-  url: SafeResourceUrl;
+
 
   constructor(
-    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -25,8 +20,5 @@ export class HomeComponent implements OnInit {
   }
 
 
-  getDataFromTimeline(data: string) {
-    this.linkFromTimeline = data;
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(data);
-  }
+
 }
