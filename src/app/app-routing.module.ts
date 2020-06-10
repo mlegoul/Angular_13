@@ -10,12 +10,8 @@ const routes: Routes = [
     canActivate: [LoginGuard],
   },
   {
-    path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule),
-  },
-  {
-    path: 'sign-up',
-    loadChildren: () => import('./auth/sign-up/sign-up.module').then(m => m.SignUpModule),
+    path: 'auth',
+    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
   }
 ];
 
