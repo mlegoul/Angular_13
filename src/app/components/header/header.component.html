@@ -2,10 +2,16 @@
   <mat-sidenav #sidenav mode="over">
     <nav>
       <ul>
-        <li *ngFor="let data of listInputsForMenu">
-          <button mat-button color="primary" routerLink="{{checkList.get(data).router}}" (click)="sidenav.close()">
-            <mat-icon aria-hidden="false">{{checkList.get(data).display}}</mat-icon>
-            <span>{{checkList.get(data).title}}</span>
+        <li>
+          <button mat-button color="primary" (click)="sidenav.close()">
+            <mat-icon aria-hidden="false">home</mat-icon>
+            <span>Home</span>
+          </button>
+        </li>
+        <li>
+          <button mat-button color="accent" (click)="sidenav.close() && logoutUser()">
+            <mat-icon aria-hidden="false">exit_to_app</mat-icon>
+            <span>Me déconnecter</span>
           </button>
         </li>
       </ul>

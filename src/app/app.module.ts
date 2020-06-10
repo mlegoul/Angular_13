@@ -10,6 +10,15 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderModule} from './components/header/header.module';
+import {SignUpComponent} from './pages/auth/sign-up/sign-up.component';
+import {LoginGuard} from './guards/login.guard';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -17,6 +26,7 @@ registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,8 +34,15 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     BrowserAnimationsModule,
     HeaderModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
   ],
-  providers: [],
+  providers: [LoginGuard],
   exports: [],
   bootstrap: [AppComponent]
 })
