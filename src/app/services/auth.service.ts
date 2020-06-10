@@ -19,7 +19,7 @@ export class AuthService {
   ) {
   }
 
-  loginFromService$(login: string, password: string): Observable<Object> {
+  loginWithEmailAndPassword$(login: string, password: string): Observable<Object> {
     return this.http.post(this.API_URL + '/login', {login, password})
       .pipe(
         tap((token) => {
