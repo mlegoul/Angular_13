@@ -8,17 +8,16 @@ import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
+  API_URL: string = 'http://localhost:3000/api/auth';
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) {
   }
-
-  API_URL: string = 'http://localhost:3000/api/auth';
-
 
   loginFromService$(login: string, password: string): Observable<Object> {
     return this.http.post(this.API_URL + '/login', {login, password})
@@ -34,11 +33,8 @@ export class AuthService {
     return localStorage.setItem('token', authResult.token);
   }
 
-
   logoutUser() {
-    console.log('Remove Token for logout User');
     localStorage.removeItem('token');
-    return this.router.navigate(['/login']);
+    return this.router.navigate(['/auth/login']);
   }
-
 }
