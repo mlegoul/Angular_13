@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 
@@ -11,7 +11,8 @@ import {Router} from '@angular/router';
 
 export class AuthService {
 
-  API_URL: string = 'http://localhost:3000/api/auth';
+  API_Login_URL: string = 'http://localhost:3000/api/auth/login';
+  API_SignUp_URL: string = 'http://localhost:3000/api/auth/signup';
 
   constructor(
     private http: HttpClient,
@@ -20,12 +21,28 @@ export class AuthService {
   }
 
   loginWithEmailAndPassword$(login: string, password: string): Observable<Object> {
-    return this.http.post(this.API_URL + '/login', {login, password})
+    return this.http.post(this.API_Login_URL, {login, password})
       .pipe(
         tap((token) => {
           this.setSession(token);
           return this.router.navigate(['/']);
         }),
+        catchError((err => {
+          throw err;
+        }))
+      )
+  }
+
+  createAccount$(email: string, password: string): Observable<Object> {
+    return this.http.post(this.API_SignUp_URL, {email, password})
+      .pipe(
+        tap((token) => {
+          this.setSession(token);
+          return this.router.navigate(['/']);
+        }),
+        catchError((err => {
+          throw err;
+        }))
       )
   }
 

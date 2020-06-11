@@ -22,11 +22,15 @@ section {
 
 mat-card {
   height: 25em;
-  width: 30em;
+  width: 35em;
   background-color: #f5f5f7;
 }
 
 mat-form-field {
   font-size: 13px;
-  width: 28em;
+  width: auto;
+}
+
+.formInput {
+  width: 37em;
 }

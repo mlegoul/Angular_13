@@ -1,4 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../services/auth.service';
+import {take, tap} from 'rxjs/operators';
+import {SnackBarService} from '../../../services/snack-bar.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -7,12 +12,38 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  hide: boolean;
+  signUpForm: FormGroup;
+  hide: boolean = true;
 
-  constructor() {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackBarService: SnackBarService,
+  ) {
   }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.signUpForm = this.fb.group({
+      email: ['johndoe@toto.fr' || null, [Validators.required, Validators.email]],
+      password: ['toto' || null, [Validators.required]],
+    });
+  }
+
+  sendSignUpForm() {
+    const values = this.signUpForm.value;
+    return this.authService.createAccount$(values.email, values.password)
+      .pipe(
+        take(1),
+        tap(() => {
+          this.snackBarService.ValidSignUp();
+          this.signUpForm.reset();
+        })
+      )
+      .subscribe()
   }
 
 }

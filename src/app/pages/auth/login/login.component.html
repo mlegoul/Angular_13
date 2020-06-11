@@ -1,5 +1,5 @@
 <section>
-  <mat-card>
+  <mat-card [formGroup]="loginForm">
 
     <mat-grid-list cols="1" rowHeight="fit" class="header">
       <mat-grid-tile colspan="1" rowspan="1">
@@ -13,7 +13,7 @@
     <mat-grid-list cols="1" rowHeight="fit" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card-title>
-          <mat-form-field appearance="outline" [formGroup]="loginForm">
+          <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <label>
               <input matInput placeholder="exemple@gmail.fr" formControlName="email">
@@ -27,7 +27,7 @@
     <mat-grid-list cols="1" rowHeight="fit" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card-title>
-          <mat-form-field appearance="outline" [formGroup]="loginForm">
+          <mat-form-field appearance="outline">
             <mat-label>Mot de passe</mat-label>
             <label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">

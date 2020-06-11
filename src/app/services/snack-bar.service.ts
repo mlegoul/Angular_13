@@ -17,4 +17,11 @@ export class SnackBarService {
       verticalPosition: 'top',
     });
   }
+
+  ValidSignUp() {
+    return this.snackBar.open('Compte créer !', 'Fermer', {
+      duration: 2500,
+      verticalPosition: 'top',
+    });
+  }
 }
