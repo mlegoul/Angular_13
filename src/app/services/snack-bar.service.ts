@@ -1,0 +1,27 @@
+import {Injectable} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SnackBarService {
+
+  constructor(
+    private snackBar: MatSnackBar,
+  ) {
+  }
+
+  openSnackBar() {
+    return this.snackBar.open('Connexion OK !', 'Fermer', {
+      duration: 2500,
+      verticalPosition: 'top',
+    });
+  }
+
+  ValidSignUp() {
+    return this.snackBar.open('Compte créer !', 'Fermer', {
+      duration: 2500,
+      verticalPosition: 'top',
+    });
+  }
+}

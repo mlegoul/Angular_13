@@ -19,6 +19,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ReactiveFormsModule} from '@angular/forms';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -28,20 +30,22 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     SignUpComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    HeaderModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        HeaderModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+    ],
   providers: [LoginGuard],
   exports: [],
   bootstrap: [AppComponent]

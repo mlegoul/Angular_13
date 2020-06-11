@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {take, tap} from 'rxjs/operators';
+import {SnackBarService} from '../../../services/snack-bar.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private snackBarService: SnackBarService,
   ) {
   }
 
@@ -33,12 +35,11 @@ export class LoginComponent implements OnInit {
 
   sendLoginForm() {
     const values = this.loginForm.value;
-    return this.authService.loginFromService$(values.email, values.password)
+    return this.authService.loginWithEmailAndPassword$(values.email, values.password)
       .pipe(
         take(1),
-        tap(x => console.log(x)),
+        tap(() => this.snackBarService.openSnackBar()),
       )
       .subscribe();
   }
-
 }
