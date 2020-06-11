@@ -1,3 +1,17 @@
 <section>
-  <p>Hello from Home Page !</p>
+  <mat-card>
+    <mat-card-title>
+      <h1>Welcome to the Home Page !</h1>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <hr>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-grid-list cols="1" rowHeight="fit" class="homeMessage">
+        <mat-grid-tile rowspan="1" colspan="1">
+          <app-message></app-message>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
 </section>

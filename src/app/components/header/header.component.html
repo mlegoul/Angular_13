@@ -1,27 +1,34 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over">
-    <nav>
-      <ul>
-        <li>
+
+    <mat-grid-list cols="1" rowHeight="fit" class="contentSidenav">
+      <mat-grid-tile rowspan="3" colspan="1">
+        <mat-grid-tile rowspan="1" colspan="1">
           <button mat-button color="primary" routerLink="/" (click)="sidenav.close()">
+
             <mat-icon aria-hidden="false">home</mat-icon>
-            <span>Home</span>
+            <span>  Home</span>
           </button>
-        </li>
-        <li>
+        </mat-grid-tile>
+
+        <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+
+        <mat-grid-tile rowspan="1" colspan="1">
           <button mat-button color="primary" routerLink="/news" (click)="sidenav.close()">
             <mat-icon aria-hidden="false">fiber_new</mat-icon>
-            <span>News</span>
+            <span>  News</span>
           </button>
-        </li>
-        <li>
-          <button mat-button color="accent" (click)="sidenav.close() && logoutUser()">
-            <mat-icon aria-hidden="false">exit_to_app</mat-icon>
-            <span>Me déconnecter</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
+        </mat-grid-tile>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile rowspan="1" colspan="1">
+        <button mat-button color="accent" (click)="sidenav.close() && logoutUser()">
+          <mat-icon aria-hidden="false">exit_to_app</mat-icon>
+          <span>  Me déconnecter</span>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
