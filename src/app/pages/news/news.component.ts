@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {TimelineComponent} from '../../components/timeline/timeline.component';
+import {Component, OnInit} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
@@ -9,7 +8,6 @@ import {SafeResourceUrl} from '@angular/platform-browser';
 })
 export class NewsComponent implements OnInit {
 
-  @ViewChild(TimelineComponent) component: TimelineComponent;
   linkFromTimeline: string;
   url: SafeResourceUrl;
 
