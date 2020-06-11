@@ -4,10 +4,11 @@ import {NewsComponent} from './news.component';
 import {NewsRoutingModule} from './news.routing.module';
 import {TimelineModule} from '../../components/timeline/timeline.module';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {SafePipe} from '../../pipes/safe.pipe';
 
 
 @NgModule({
-  declarations: [NewsComponent],
+  declarations: [NewsComponent, SafePipe],
   imports: [
     CommonModule,
     NewsRoutingModule,
