@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from './main.component';
 import {LoginGuard} from '../../guards/login.guard';
+import {ConnectedToBackGuard} from '../../guards/connected-to-back.guard';
 
 
 const routes: Routes = [
@@ -12,10 +13,12 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('../home/home.module').then(m => m.HomeModule),
+        canActivate: [ConnectedToBackGuard],
       },
       {
         path: 'news',
         loadChildren: () => import('../news/news.module').then(m => m.NewsModule),
+        canActivate: [ConnectedToBackGuard],
       }
     ]
   },
