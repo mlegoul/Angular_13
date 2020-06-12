@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 
 @Injectable({
@@ -13,14 +15,17 @@ export class LoginGuard implements CanActivate {
   ) {
   }
 
-  canActivate(): boolean {
+  canActivate(): Observable<boolean> {
     const token = localStorage.getItem('token');
 
     if (token) {
-      this.router.navigate(['/']).then();
-      return false;
+      return of(false)
+        .pipe(
+          tap(() => this.router.navigate(['/'])),
+        )
+
     } else {
-      return true;
+      return of(true);
     }
   }
 }
