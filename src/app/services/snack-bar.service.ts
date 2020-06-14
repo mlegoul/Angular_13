@@ -11,15 +11,22 @@ export class SnackBarService {
   ) {
   }
 
-  openSnackBar() {
+  validLoginUser() {
     return this.snackBar.open('Connexion OK !', 'Fermer', {
       duration: 2500,
       verticalPosition: 'top',
     });
   }
 
-  ValidSignUp() {
+  validSignUpUser() {
     return this.snackBar.open('Compte créer !', 'Fermer', {
+      duration: 2500,
+      verticalPosition: 'top',
+    });
+  }
+
+  noValidLogin() {
+    return this.snackBar.open('Erreur ! Authentification impossible.', 'Fermer', {
       duration: 2500,
       verticalPosition: 'top',
     });

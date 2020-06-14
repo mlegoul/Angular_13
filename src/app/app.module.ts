@@ -7,7 +7,7 @@ import localeFr from '@angular/common/locales/fr';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderModule} from './components/header/header.module';
 import {SignUpComponent} from './pages/auth/sign-up/sign-up.component';
@@ -21,6 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ReactiveFormsModule} from '@angular/forms';
+import {LoginInterceptor} from './interceptors/login.interceptor';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -46,7 +47,10 @@ registerLocaleData(localeFr, 'fr');
     MatSnackBarModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginGuard],
+  providers: [
+    LoginGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
