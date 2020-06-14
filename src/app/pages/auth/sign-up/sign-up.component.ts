@@ -28,8 +28,8 @@ export class SignUpComponent implements OnInit {
 
   initForm() {
     this.signUpForm = this.fb.group({
-      email: ['johndoe@toto.fr' || null, [Validators.required, Validators.email]],
-      password: ['toto' || null, [Validators.required]],
+      email: ['' || null, [Validators.required, Validators.email]],
+      password: ['' || null, [Validators.required]],
     });
   }
 
@@ -39,11 +39,10 @@ export class SignUpComponent implements OnInit {
       .pipe(
         take(1),
         tap(() => {
-          this.snackBarService.ValidSignUp();
           this.signUpForm.reset();
-        })
+          this.snackBarService.validSignUpUser();
+        }),
       )
-      .subscribe()
+      .subscribe();
   }
-
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 
@@ -23,31 +23,20 @@ export class AuthService {
   loginWithEmailAndPassword$(login: string, password: string): Observable<Object> {
     return this.http.post(this.API_Login_URL, {login, password})
       .pipe(
-        tap((token) => {
-          this.setSession(token);
-          return this.router.navigate(['/']);
-        }),
-        catchError((err => {
-          throw err;
-        }))
+        tap((token) => this.setSession(token)),
       )
   }
 
   createAccount$(email: string, password: string): Observable<Object> {
     return this.http.post(this.API_SignUp_URL, {email, password})
       .pipe(
-        tap((token) => {
-          this.setSession(token);
-          return this.router.navigate(['/']);
-        }),
-        catchError((err => {
-          throw err;
-        }))
+        tap((token) => this.setSession(token)),
       )
   }
 
-  setSession(authResult): void {
-    return localStorage.setItem('token', authResult.token);
+  setSession(authResult): Promise<boolean> {
+    localStorage.setItem('token', authResult.token);
+    return this.router.navigate(['/']);
   }
 
   logoutUser() {
