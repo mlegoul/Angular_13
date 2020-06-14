@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
-import {take, tap, catchError} from 'rxjs/operators';
+import {take, tap} from 'rxjs/operators';
 import {SnackBarService} from '../../../services/snack-bar.service';
 
 

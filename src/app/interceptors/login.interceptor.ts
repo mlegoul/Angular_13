@@ -24,10 +24,10 @@ export class LoginInterceptor implements HttpInterceptor {
           switch (err.status) {
             case 401:
               this.snackBarService.noValidLogin();
-              return throwError(err)
+              return throwError(err);
 
             default:
-              console.log('test');
+              console.log('default', err);
               break;
           }
         })

@@ -13,7 +13,7 @@ export class ConnectedToBackGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (!token) {
       return of(false)

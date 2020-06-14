@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      email: ['oiuhgyti@free.fr' || null, [Validators.required, Validators.email]],
-      password: ['erf8df454d5*' || null, [Validators.required]],
+      email: ['test@gmail.fr' || null, [Validators.required, Validators.email]],
+      password: ['toto' || null, [Validators.required]],
     });
   }
 
