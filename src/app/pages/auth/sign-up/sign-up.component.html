@@ -10,34 +10,31 @@
     </mat-grid-list>
 
 
-    <!-- Block username -->
-    <mat-grid-list cols="1" rowHeight="fit" class="content">
+    <!-- Block Email and Username -->
+    <mat-grid-list cols="2" rowHeight="fit" gutterSize="1em" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-form-field class="formInput" appearance="outline">
-          <mat-label>Username</mat-label>
+          <mat-label>Email</mat-label>
           <label>
-            <input matInput placeholder="username ici" formControlName="username">
+            <input matInput placeholder="exemple@gmail.fr" formControlName="email">
           </label>
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
-    </mat-grid-list>
-
-    <!-- Block email -->
-    <mat-grid-list cols="1" rowHeight="fit" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
-          <mat-form-field class="formInput" appearance="outline">
-            <mat-label>Email</mat-label>
-            <label>
-              <input matInput placeholder="exemple@gmail.fr" formControlName="email">
-            </label>
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
+        <mat-form-field class="formInput" appearance="outline">
+          <mat-label>Username</mat-label>
+          <label>
+            <input matInput placeholder="Username ici" formControlName="username">
+          </label>
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
 
-    <!-- Block passwords -->
-    <mat-grid-list cols="2" rowHeight="fit" class="content">
+
+    <!-- Block Password and Confirm Password -->
+    <mat-grid-list cols="2" rowHeight="fit" gutterSize="1em" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Mot de passe</mat-label>
@@ -50,7 +47,18 @@
             </button>
           </mat-form-field>
       </mat-grid-tile>
-
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirme Mot de Passe</mat-label>
+          <label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+          </label>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
     </mat-grid-list>
 
 
@@ -65,7 +73,5 @@
         <button mat-flat-button color="warn" routerLink="/auth/login">Annuler</button>
       </mat-grid-tile>
     </mat-grid-list>
-
-
   </mat-card>
 </section>
