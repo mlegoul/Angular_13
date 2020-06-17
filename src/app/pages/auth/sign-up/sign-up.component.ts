@@ -28,14 +28,16 @@ export class SignUpComponent implements OnInit {
 
   initForm() {
     this.signUpForm = this.fb.group({
-      email: ['' || null, [Validators.required, Validators.email]],
-      password: ['' || null, [Validators.required]],
-    });
+        username: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+      },
+    );
   }
 
   sendSignUpForm() {
     const values = this.signUpForm.value;
-    return this.authService.createAccount$(values.email, values.password)
+    return this.authService.createAccount$(values.email, values.password, values.username)
       .pipe(
         take(1),
         tap(() => {

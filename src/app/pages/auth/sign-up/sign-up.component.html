@@ -9,6 +9,20 @@
       </mat-grid-tile>
     </mat-grid-list>
 
+
+    <!-- Block username -->
+    <mat-grid-list cols="1" rowHeight="fit" class="content">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="formInput" appearance="outline">
+          <mat-label>Username</mat-label>
+          <label>
+            <input matInput placeholder="username ici" formControlName="username">
+          </label>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
     <!-- Block email -->
     <mat-grid-list cols="1" rowHeight="fit" class="content">
       <mat-grid-tile colspan="1" rowspan="1">
@@ -36,6 +50,7 @@
             </button>
           </mat-form-field>
       </mat-grid-tile>
+
     </mat-grid-list>
 
 

@@ -20,15 +20,15 @@ export class AuthService {
   ) {
   }
 
-  loginWithEmailAndPassword$(login: string, password: string): Observable<Object> {
-    return this.http.post(this.API_Login_URL, {login, password})
+  loginWithEmailAndPassword$(email: string, password: string): Observable<Object> {
+    return this.http.post(this.API_Login_URL, {email, password})
       .pipe(
         tap((token) => this.setSession(token)),
       )
   }
 
-  createAccount$(email: string, password: string): Observable<Object> {
-    return this.http.post(this.API_SignUp_URL, {email, password})
+  createAccount$(email: string, password: string, username: string): Observable<Object> {
+    return this.http.post(this.API_SignUp_URL, {email, password, username})
       .pipe(
         tap((token) => this.setSession(token)),
       )

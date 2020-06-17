@@ -28,19 +28,23 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      email: ['test@gmail.fr' || null, [Validators.required, Validators.email]],
-      password: ['toto' || null, [Validators.required]],
-    });
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+      },
+    );
   }
 
   sendLoginForm() {
     const values = this.loginForm.value;
-    this.authService.loginWithEmailAndPassword$(values.email, values.password)
+    return this.authService.loginWithEmailAndPassword$(values.email, values.password)
       .pipe(
         take(1),
-        tap(() => this.snackBarService.validLoginUser()),
+        tap(() => {
+          this.snackBarService.validLoginUser();
+          this.loginForm.reset();
+        }),
       )
       .subscribe();
-    return this.loginForm.reset();
   }
+
 }

@@ -16,11 +16,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <label>
-              <input matInput
-                     placeholder="exemple@gmail.fr"
-                     formControlName="email"
-                     autofocus="autofocus"
-                     (keydown.enter)="sendLoginForm()">
+              <input matInput placeholder="exemple@gmail.fr" formControlName="email">
             </label>
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
@@ -34,7 +30,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Mot de passe</mat-label>
             <label>
-              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" (keydown.enter)="sendLoginForm()">
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
             </label>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
