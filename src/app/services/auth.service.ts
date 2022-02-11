@@ -11,8 +11,8 @@ import {Router} from '@angular/router';
 
 export class AuthService {
 
-  API_Login_URL: string = 'http://localhost:3000/api/auth/login';
-  API_SignUp_URL: string = 'http://localhost:3000/api/auth/signup';
+  apiLoginUrl: string = 'http://localhost:3000/api/auth/login';
+  apiSignUpUrl: string = 'http://localhost:3000/api/auth/signup';
 
   constructor(
     private http: HttpClient,
@@ -21,17 +21,17 @@ export class AuthService {
   }
 
   loginWithEmailAndPassword$(email: string, password: string): Observable<Object> {
-    return this.http.post(this.API_Login_URL, {email, password})
+    return this.http.post(this.apiLoginUrl, {email, password})
       .pipe(
         tap((token) => this.setSession(token)),
-      )
+      );
   }
 
   createAccount$(email: string, password: string, username: string): Observable<Object> {
-    return this.http.post(this.API_SignUp_URL, {email, password, username})
+    return this.http.post(this.apiSignUpUrl, {email, password, username})
       .pipe(
         tap((token) => this.setSession(token)),
-      )
+      );
   }
 
   setSession(authResult): Promise<boolean> {
