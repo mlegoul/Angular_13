@@ -1,8 +1,8 @@
 {
-  "name": "angular9",
-  "short_name": "angular9",
+  "name": "angular_13",
+  "short_name": "angular_13",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "pink",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
@@ -54,6 +54,7 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
-    }
+    },
+
   ]
 }
