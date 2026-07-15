@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {MatDrawer, MatDrawerMode} from '@angular/material/sidenav';
 
 
 @Component({
@@ -9,6 +10,7 @@ import {AuthService} from '../../services/auth.service';
 })
 
 export class HeaderComponent implements OnInit {
+  @ViewChild('sidenav') sidenav!: MatDrawer;
 
   constructor(
     private authService: AuthService,
@@ -18,8 +20,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logoutUser() {
-    return this.authService.logoutUser();
+  async logoutUser(): Promise<void> {
+    await this.sidenav.close();
+    this.authService.logoutUser();
   }
 
 }

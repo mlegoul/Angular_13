@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -6,14 +6,15 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent implements OnInit {
+  @ViewChild('title') titleElement!: ElementRef<HTMLElement>;
 
   welcomeList: string[] = [
     'Welkom', 'Mirë se vini', 'Willkommen', 'Welkomma', 'Welcome', 'Marhaban', 'Bari galoust',
-    'Xos gelmissiniz', 'Welkum', 'Ongi etorri', 'Swagata', 'Bienvenue', 'Ansuf yiswen', 'ščyra zaprašajem',
-    'Kyo tzo pa eit', 'Ani kié', 'Dobro došli', 'Degemer mad', 'Dobre doshŭl', 'Benvinguts', 'Huān yíng', 'Karibu',
+    'Xos gelmissiniz', 'Welkum', 'Ongi etorri', 'Swagata', 'Bienvenue', 'Ansuf yiswen', 'Šdyra zaprašajem',
+    'Kyo tzo pa eit', 'Ani kié', 'Dobro došli', 'Degemer mad', 'Dobre došl', 'Benvinguts', 'Huānyíng', 'Karibu',
     'Eoso eoseyo', 'Bonavinuta', 'Bel bonjou', 'Dobrodošli', 'Velkommen', 'Bienvenidos', 'Bonvenon', 'Tere tulemast',
-    'Welkom', 'Kalos irthate', 'Baroukh habaim', 'Swaagat', 'üdvözlöm', 'Benvenuti', 'Gratus mihi venis', 'Haere mai',
-    'Khosh âmadid', 'Witajcie', 'Bem-vindo', 'Bine aţi venit', 'Dobro pojalovat', 'Välkommen', 'Maeva', 'Hosgeldiniz',
+    'Welkom', 'Kalos irthate', 'Baroukh habaim', 'Swaagat', 'Üdvözlöm', 'Benvenuti', 'Gratus mihi venis', 'Haere mai',
+    'Khosh âmadid', 'Witajcie', 'Bem-vindo', 'Bine ați venit', 'Dobro pojalovat', 'Välkommen', 'Maeva', 'Hosgeldiniz',
     'Laskavo prosymo',
   ];
 
@@ -21,27 +22,20 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setInterval(() => {
-      return this.getListWelcome();
-    }, 94000, this.getListWelcome());
+    this.getListWelcome();
   }
 
-  getListWelcome() {
-
-    try {
-      for (let i = 0; i <= this.welcomeList.length; i++) {
-        this.showWelcomeList(i);
-      }
-    } catch (err) {
-      throw err;
+  getListWelcome(): void {
+    for (let i = 0; i < this.welcomeList.length; i++) {
+      this.showWelcomeList(i);
     }
   }
 
-  showWelcomeList(i: number) {
-
-    setTimeout(async () => {
-      const element = await document.getElementById('title');
-      return element.innerHTML = this.welcomeList[i];
+  showWelcomeList(i: number): void {
+    setTimeout(() => {
+      if (this.titleElement?.nativeElement) {
+        this.titleElement.nativeElement.innerHTML = this.welcomeList[i];
+      }
     }, 2000 * i);
   }
 
