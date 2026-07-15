@@ -4,6 +4,9 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
+interface AuthResponse {
+  token: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,26 +23,26 @@ export class AuthService {
   ) {
   }
 
-  loginWithEmailAndPassword$(email: string, password: string): Observable<Object> {
-    return this.http.post(this.API_Login_URL, {email, password})
+  loginWithEmailAndPassword$(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(this.API_Login_URL, {email, password})
       .pipe(
-        tap((token) => this.setSession(token)),
+        tap((token: AuthResponse) => this.setSession(token)),
       )
   }
 
-  createAccount$(email: string, password: string, username: string): Observable<Object> {
-    return this.http.post(this.API_SignUp_URL, {email, password, username})
+  createAccount$(email: string, password: string, username: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(this.API_SignUp_URL, {email, password, username})
       .pipe(
-        tap((token) => this.setSession(token)),
+        tap((token: AuthResponse) => this.setSession(token)),
       )
   }
 
-  setSession(authResult): Promise<boolean> {
+  setSession(authResult: AuthResponse): Promise<boolean> {
     localStorage.setItem('token', authResult.token);
     return this.router.navigate(['/']);
   }
 
-  logoutUser() {
+  logoutUser(): Promise<boolean> {
     localStorage.removeItem('token');
     return this.router.navigate(['/auth/login']);
   }

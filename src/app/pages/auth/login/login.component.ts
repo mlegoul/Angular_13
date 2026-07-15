@@ -12,7 +12,7 @@ import {SnackBarService} from '../../../services/snack-bar.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   hide: boolean = true;
 
   constructor(
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
 
-  initForm() {
+  initForm(): void {
     this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  sendLoginForm() {
+  sendLoginForm(): void {
     const values = this.loginForm.value;
-    return this.authService.loginWithEmailAndPassword$(values.email, values.password)
+    this.authService.loginWithEmailAndPassword$(values.email, values.password)
       .pipe(
         take(1),
         tap(() => {

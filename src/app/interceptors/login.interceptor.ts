@@ -6,7 +6,7 @@ import {
   HttpInterceptor, HttpErrorResponse,
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {SnackBarService} from '../services/snack-bar.service';
 
 @Injectable()
@@ -24,12 +24,20 @@ export class LoginInterceptor implements HttpInterceptor {
           switch (err.status) {
             case 401:
               this.snackBarService.noValidLogin();
-              return throwError(err);
-
-            default:
-              console.log('default', err);
               break;
+            case 403:
+              this.snackBarService.noValidLogin();
+              break;
+            case 404:
+              console.warn('Resource not found', err);
+              break;
+            case 500:
+              console.error('Server error', err);
+              break;
+            default:
+              console.error('HTTP error', err);
           }
+          return throwError(() => err);
         })
       );
   }

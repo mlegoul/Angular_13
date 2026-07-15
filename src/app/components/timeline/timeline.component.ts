@@ -11,8 +11,8 @@ import {RssModel} from '../../interfaces/rss-model';
 })
 export class TimelineComponent implements OnInit {
 
-  @Output() linkByOutput = new EventEmitter();
-  rssFeed: RssModel[];
+  @Output() linkByOutput = new EventEmitter<string>();
+  rssFeed: RssModel[] = [];
   isLoading: boolean = true;
 
   constructor(
@@ -26,21 +26,26 @@ export class TimelineComponent implements OnInit {
   }
 
 
-  eventLinkArticle(url): void {
-    return this.linkByOutput.emit(url);
+  eventLinkArticle(url: string): void {
+    this.linkByOutput.emit(url);
   }
 
 
-  getJsonFromService() {
-    return this.rssService.getJsonFromDatabase$()
+  getJsonFromService(): void {
+    this.rssService.getJsonFromDatabase$()
       .pipe(
         take(1),
-        map(value => Object.values(value)
-          .reduce((acc, value) => {
-            return [...Object.values(value)];
-          }, [])
-        ),
-        tap(rss => this.rssFeed = rss),
+        map((value: any) => {
+          const allItems: RssModel[] = [];
+          for (const key in value) {
+            if (value.hasOwnProperty(key)) {
+              const items = Object.values(value[key]) as RssModel[];
+              allItems.push(...items);
+            }
+          }
+          return allItems;
+        }),
+        tap((rss: RssModel[]) => this.rssFeed = rss),
         tap(() => this.isLoading = false),
       )
       .subscribe();

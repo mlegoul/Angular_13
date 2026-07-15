@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {ReactiveFormsModule} from '@angular/forms';
 import {LoginInterceptor} from './interceptors/login.interceptor';
 
@@ -45,6 +46,7 @@ registerLocaleData(localeFr, 'fr');
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatSidenavModule,
     ReactiveFormsModule,
   ],
   providers: [

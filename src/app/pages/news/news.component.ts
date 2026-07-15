@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -8,19 +9,20 @@ import {SafeResourceUrl} from '@angular/platform-browser';
 })
 export class NewsComponent implements OnInit {
 
-  linkFromTimeline: string;
-  url: SafeResourceUrl;
+  linkFromTimeline: string = '';
+  url: SafeResourceUrl | null = null;
 
   constructor(
+    private sanitizer: DomSanitizer,
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  getDataFromTimeline(data: string) {
+  getDataFromTimeline(data: string): void {
     this.linkFromTimeline = data;
-    return this.url = data;
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(data);
   }
 
 }
